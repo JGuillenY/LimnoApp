@@ -1,0 +1,64 @@
+<content id="calculadora">
+	<div id="wrapper">
+		<nav id="menu" ng-class="{'open': calc_menu}">
+			<ul>
+				<li class="c_title"><h3>- Menu -</h3></li>
+				<li ng-repeat="o in f" class="c_option" ng-class="{'active' : selected_option == o.nombre}" ng-click="select(o.nombre)">
+					<h4>{{o.nombre}}</h4>
+					<h5>{{o.descripcion}}</h5>
+				</li>
+			</ul>
+		</nav>
+
+		<div id="btn-layer">
+			<span class="menu-btn" ng-click="calc_menu = !calc_menu">
+				<img src="img/menu-btn.png">
+			</span>
+		</div>
+
+		<section id="workspace">
+			<div class="no-option" ng-if='selected_option == ""'>
+				<h2>Seleccione una opcion del menu.</h2>
+			</div>
+			<div ng-if='selected_option != ""' class="custom-dir">
+				<header>
+					<h2>{{f[selected_option].nombre}}</h2>
+					<h3>{{f[selected_option].descripcion}}</h3><br>
+					<div class="formula">
+						<img ng-src="img/{{f[selected_option].nombre}}.gif">
+					</div>
+				</header>
+				
+				<div class="message">
+					<p ng-repeat="m in f[selected_option].content">{{m}}<br></p>
+				</div>
+				<table>
+					<tr>
+						<td class="name"><label>{{f[selected_option].inputs[0].var}}</label></td>
+						<td class="input"><input type="number" ng-model="var1"></td>
+						<td class="unidad">{{f[selected_option].inputs[0].u}}</td>
+					</tr>
+					<tr ng-show="f[selected_option].inputs.length > 1">
+						<td class="name"><label>{{f[selected_option].inputs[1].var}}</label></td>
+						<td class="input"><input type="number" ng-model="var2"></td>
+						<td class="unidad">{{f[selected_option].inputs[1].u}}</td>
+					</tr>
+					<tr ng-show="f[selected_option].inputs.length > 2">
+						<td class="name"><label>{{f[selected_option].inputs[2].var}}</label></td>
+						<td class="input"><input type="number" ng-model="var3"></td>
+						<td class="unidad">{{f[selected_option].inputs[2].u}}</td>
+					</tr>
+				</table>
+				<button ng-click="calculate()">Calcular</button>
+				<div class="result">
+					<label>RESULTADO:</label><br>
+					<label>{{result}}</label>
+				</div>
+			</div>
+		</section>
+
+		<div class="back-btn" ng-click="toPortada()">
+			<img src="img/go_back.png">
+		</div>
+	</div>
+</content>

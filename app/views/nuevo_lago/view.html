@@ -1,0 +1,31 @@
+<content id="nuevo_lago">
+	<div id="geoback"></div>
+	<h1>Ingrese los Datos</h1>
+	<form>
+		<div id="lago_nombre">
+			<label>Nombre:</label>
+			<input type="text" ng-model="lago.nombre"></input>
+		</div>
+		<div id="lago_origen">
+			<label>Origen:</label>
+			<input type="text" ng-model="lago.origen"></input>
+		</div>
+		<div class="db">
+			<label>Linea de Costa (Lc):</label>
+			<input type="number" ng-model="lago.lc"></input>m.
+		</div>
+		<div class="db">
+			<label>Area (A):</label>
+			<input type="number" ng-model="lago.area"></input>m&sup2;.
+		</div>
+		<div class="db">
+			<label>Volumen (V):</label>
+			<input type="number" ng-model="lago.volumen"></input>m&sup3;.
+		</div>
+		<div class="db">
+			<label>Profundidad Maxima (Pm):</label>
+			<input type="number" ng-model="lago.pm"></input>m.
+		</div><br>	
+		<button ng-click="toPortada()">Cancelar</button><button ng-click="">Ingresar</button>
+	</form>
+</content>
